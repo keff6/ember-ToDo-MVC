@@ -16,11 +16,21 @@ export default Ember.Controller.extend({
                 title: title,
                 isCompleted: false
             });
-            
+
             //Clear out the text field
             this.set('newTitle', '');
-            
+
             todo.save();
         }
-    }
+    },
+    remaining: Ember.computed('model.@each.isCompleted', function () {
+        let todos = this.get('model');
+        return todos.filterBy('isCompleted', false).get('length');
+    }),
+    inflection: function(){
+        let remaining = this.get('remaining');
+        return remaining === 1? 'item': 'items';
+    }.property('remaining')
+
 });
+
