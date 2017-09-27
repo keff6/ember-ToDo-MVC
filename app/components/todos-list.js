@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
     actions: {
-        createTodo: function () {
+        createTodo: function () {            
             let title = this.get('newTitle');
 
             if (!title) {
@@ -33,4 +33,3 @@ export default Ember.Controller.extend({
     }.property('remaining')
 
 });
-
