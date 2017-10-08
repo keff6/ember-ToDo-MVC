@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    actions: {
+   /* actions: {
         createTodo: function () {            
             let title = this.get('newTitle');
 
@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 
             todo.save();
         }
-    },
+    },*/
     remaining: Ember.computed('model.@each.isCompleted', function () {
         let todos = this.get('model');
         return todos.filterBy('isCompleted', false).get('length');
