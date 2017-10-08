@@ -1,4 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend({  
+    model() {
+        let todos = this.modelFor('todos');
+        return todos.filter((todo) => {
+            return todo.get('isCompleted')
+        })
+    },
+    renderTemplate(controller, model) {
+        this.render('todos.index', {
+            model: model
+        });
+    }
 });
